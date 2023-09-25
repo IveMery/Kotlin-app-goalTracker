@@ -34,18 +34,26 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.96" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
-        android:layout_width="286dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="20dp"
-        android:hint="@string/til_ingresa_tu_correo_electronico"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email_login"
+        android:layout_width="353dp"
+        android:layout_height="76dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.253"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.198">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiel_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:hint="@string/til_ingresa_tu_correo_electronico" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -73,38 +81,54 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.12" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
-        android:layout_width="296dp"
-        android:layout_height="50dp"
-        android:hint="@string/til_contrasena"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_password_login"
+        android:layout_width="339dp"
+        android:layout_height="67dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.342" />
+        app:layout_constraintVertical_bias="0.45">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ingresar_contrasena"
+            android:inputType="textPassword"
+            android:password="true"
+            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintHorizontal_bias="0.341"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toTopOf="@+id/guideline5"
+            app:layout_constraintVertical_bias="0.442" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnpassword"
         android:layout_width="278dp"
         android:layout_height="52dp"
-        android:layout_marginBottom="368dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/border_shape"
         android:text="@string/til_contrasena_olvidada"
         android:textColor="@color/colortext"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.409"
-        app:layout_constraintStart_toStartOf="@+id/guideline7" />
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintVertical_bias="0.68" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnlogin"
         android:layout_width="278dp"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
@@ -112,13 +136,13 @@
         android:text="@string/til_iniciar_sesion"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.556" />
+        app:layout_constraintVertical_bias="0.75" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#BEBCB5B5"
@@ -128,10 +152,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintVertical_bias="0.853" />
 
     <TextView
         android:id="@+id/textView5"
@@ -143,9 +167,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.362"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.024" />
+        app:layout_constraintVertical_bias="0.02" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

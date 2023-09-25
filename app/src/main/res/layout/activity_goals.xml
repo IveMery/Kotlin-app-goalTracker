@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="#88E8DFDF"
     android:duplicateParentState="false"
-    tools:context=".activity_goals">
+    tools:context=".GoalsActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
@@ -27,18 +27,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.04" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8978102" />
+        app:layout_constraintGuide_percent="0.96" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="313dp"
+        android:layout_width="376dp"
         android:layout_height="153dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#ADEAE4E4"
@@ -59,14 +59,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="ExtraText">
-                
+
 
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
+                    android:contentDescription="avatar"
                     android:scrollbarAlwaysDrawHorizontalTrack="true"
-                    android:src="@drawable/baseline_person_24"
-                    android:contentDescription="avatar"/>
+                    android:src="@drawable/baseline_person_24" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -81,6 +81,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="Aprender a tocar guitarra"
                 android:textSize="16sp" />
 
@@ -93,20 +94,26 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:text="Editar" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Detalles" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="313dp"
-        android:layout_height="153dp"
+        android:layout_width="370dp"
+        android:layout_height="147dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#ADEAE4E4"
         android:duplicateParentState="true"
@@ -147,7 +154,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aprender a tocar guitarra"
+                android:layout_marginBottom="10dp"
+                android:text="Mejorar mi estado físico"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -159,12 +167,19 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
                     android:text="Editar" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Detalles" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar" />
             </LinearLayout>
         </LinearLayout>
 
@@ -172,8 +187,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="313dp"
-        android:layout_height="153dp"
+        android:layout_width="370dp"
+        android:layout_height="151dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#ADEAE4E4"
         android:duplicateParentState="true"
@@ -214,7 +229,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aprender a tocar guitarra"
+                android:layout_marginBottom="10dp"
+                android:text="Escribir un libro"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -226,12 +242,18 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
                     android:text="Editar" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Detalles" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eliminar" />
             </LinearLayout>
         </LinearLayout>
 
@@ -253,19 +275,19 @@
         app:layout_constraintVertical_bias="0.045" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton8"
+        android:id="@+id/floatActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="8dp"
         android:clickable="true"
+        android:contentDescription="@string/addgoalsbutton"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline16"
-        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline15"
         app:layout_constraintTop_toTopOf="@+id/guideline13"
-        app:layout_constraintVertical_bias="0.961"
-        app:srcCompat="@android:drawable/ic_menu_add"
+        app:layout_constraintVertical_bias="0.963"
         app:maxImageSize="48dp"
-        android:contentDescription="@string/addgoalsbutton"/>
+        app:srcCompat="@android:drawable/ic_menu_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

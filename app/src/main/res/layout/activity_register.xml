@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_register">
+    tools:context=".RegisterActivity">
 
 
 
@@ -38,8 +38,8 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="355dp"
-        android:layout_height="588dp"
+        android:layout_width="370dp"
+        android:layout_height="513dp"
         android:layout_margin="16dp"
         android:backgroundTint="@color/cardviewcolorfill"
         app:cardCornerRadius="8dp"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline28"
-        app:layout_constraintVertical_bias="0.32999998">
+        app:layout_constraintVertical_bias="0.32">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,6 +66,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_email_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -73,6 +74,7 @@
                     android:id="@+id/emailEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_email_24"
                     android:hint="Ingresa tu correo electrónico"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -88,6 +90,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_name_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -95,7 +98,8 @@
                     android:id="@+id/nameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Ingresa tu correo electrónico" />
+                    android:drawableStart="@drawable/baseline_person_24"
+                    android:hint="Ingresa tu nombre de usuario" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -108,16 +112,22 @@
                 android:textStyle="bold" />
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Ingresa tu fecha de nacimiento">
+        <com.google.android.material.textfield.TextInputLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/birthDateEditText"
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_birthDate"
+                    android:onClick="onClickShowDatePickerDialog"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/baseline_calendar_month_24"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
             <TextView
@@ -130,6 +140,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingresa tu contraseña">
@@ -138,6 +149,7 @@
                     android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_lock_24"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,6 +164,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_rpassword_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Repite la contraseña">
@@ -160,17 +173,10 @@
                     android:id="@+id/confirmPasswordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/baseline_lock_24"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/registerButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/btn_rec"
-                android:text="Registrarme" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -188,6 +194,20 @@
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline28"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="336dp"
+        android:layout_height="47dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_rec"
+        android:text="Registrarme"
+        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline11"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/guideline10"
+        app:layout_constraintTop_toTopOf="@+id/guideline28"
+        app:layout_constraintVertical_bias="0.985" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
