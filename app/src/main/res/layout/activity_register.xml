@@ -7,20 +7,19 @@
     tools:context=".RegisterActivity">
 
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.04" />
+        app:layout_constraintGuide_percent="0.02" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.96" />
+        app:layout_constraintGuide_percent="0.99" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -38,9 +37,9 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="370dp"
-        android:layout_height="513dp"
-        android:layout_margin="16dp"
+        android:layout_width="334dp"
+        android:layout_height="565dp"
+        android:layout_margin="13dp"
         android:backgroundTint="@color/cardviewcolorfill"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
@@ -48,20 +47,20 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline28"
-        app:layout_constraintVertical_bias="0.32">
+        app:layout_constraintVertical_bias="0.19999999">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="10dp">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Correo Electrónico"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
 
@@ -85,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Nombre de usuario"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
 
@@ -108,26 +107,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Fecha de nacimiento"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
 
-        <com.google.android.material.textfield.TextInputLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_birthDate_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_birthDate"
-                    android:onClick="onClickShowDatePickerDialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:drawableStart="@drawable/baseline_calendar_month_24"
                     android:focusable="false"
                     android:inputType="date"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:onClick="onClickShowDatePickerDialog" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <TextView
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Contraseña"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
 
@@ -157,7 +157,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="13dp"
                 android:text="Repetir contraseña"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -207,7 +207,7 @@
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline28"
-        app:layout_constraintVertical_bias="0.985" />
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

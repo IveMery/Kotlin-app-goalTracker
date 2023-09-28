@@ -14,30 +14,70 @@ class AddgoalsActivity : AppCompatActivity() {
 
         // Obteniedo referencias
         val btnAdd = findViewById<Button>(R.id.addButton)
-        val title = findViewById<TextInputLayout>(R.id.til_title)
-        val expirationDate = findViewById<TextInputLayout>(R.id.til_expirationDate)
         val expirationDateEditText = findViewById<TextInputEditText>(R.id.expirationDateEditText)
-        val description = findViewById<TextInputLayout>(R.id.til_description)
 
 
         expirationDateEditText.setOnClickListener {
-            Functions.showDatePickerDialog(this, expirationDateEditText)
+            Functions.showDatePickerDialog(this, expirationDateEditText,true,false)
         }
         btnAdd.setOnClickListener {
-            var title = title.editText?.text.toString()
-            var expiration = expirationDate.editText?.toString()
-            var description = description.editText?.text.toString()
+
+        val isFormValid = isFormAddValid()
+
+            if (isFormValid) {
+                Toast.makeText(
+                    this,
+                    "Objetivo Agregado",
+                    Toast.LENGTH_SHORT
+                ).show()
+                val intent = Intent(this, GoalsActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Por favor, complete el formulario correctamente",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        }
+
+        fun isFormAddValid() : Boolean {
+            val titleAdd = findViewById<TextInputLayout>(R.id.til_title)
+            val expirationDateAdd = findViewById<TextInputLayout>(R.id.til_expirationDate)
+            val descriptionAdd = findViewById<TextInputLayout>(R.id.til_description)
+            var title = titleAdd.editText?.text.toString()
+            var description = descriptionAdd.editText?.text.toString()
+            var expiration = expirationDateAdd.editText?.text.toString()
+
+            val validate = Validate()
+            val isTitleValid = validate.isTextNotEmpty(title)
+            val isDescriptionValid = validate.isTextNotEmpty(description)
+            val isExpirationDateValid = validate.isTextNotEmpty(expiration)
+            var valid = true
 
 
-            Toast.makeText(this,title+" "+expirationDate+description, Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,GoalsActivity::class.java)
+            if(!isTitleValid){
+                titleAdd.error ="Este campo es requerido"
+                valid= false
+            }else {
+                titleAdd.error =""
+            }
+            if(!isExpirationDateValid){
+                expirationDateAdd.error ="Este campo es requerido"
+                valid= false
+            }else {
+                expirationDateAdd.error =""
+            }
+            if(!isDescriptionValid){
+                descriptionAdd.error = "Este campo es requerido"
+                valid = false
+            }else {
+                descriptionAdd.error =""
+            }
 
-            //startActivity(intent)
+            return valid
 
         }
     }
 
-
-
-
-}

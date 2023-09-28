@@ -12,42 +12,70 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        // Obteniedo referencias
         val btnLogin = findViewById<Button>(R.id.btnlogin)
         val btnPassword =findViewById<Button>(R.id.btnpassword)
         val tvForgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
-        val emailLoqin = findViewById<TextInputLayout>(R.id.til_email_login)
-        val passwordLogin = findViewById<TextInputLayout>(R.id.til_password_login)
-
-        // OnClickListener para el botón
 
 
         btnLogin.setOnClickListener {
-            var email = emailLoqin.editText?.text.toString()
-            var password = passwordLogin.editText?.text.toString()
-            Toast.makeText(this,email+" "+password,Toast.LENGTH_SHORT).show()
-            val intent = Intent(this,GoalsActivity::class.java)
-
-            startActivity(intent)
-
+            val isFormValid = isFormLoginValid()
+            if (isFormValid) {
+                //Inicio Exitoso
+                Toast.makeText(
+                    this,
+                    "Inicio exitoso",
+                    Toast.LENGTH_SHORT
+                ).show()
+                val intent = Intent(this, GoalsActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this,
+                    "Por favor, complete el formulario correctamente",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
 
         btnPassword.setOnClickListener {
-            // Crea un Intent para iniciar la actividad 'activity_goals'
             val intent = Intent(this,ResetpasswordActivity::class.java)
-
-            // Inicia la actividad 'activity_goals'
             startActivity(intent)
-
         }
 
         tvForgotPassword.setOnClickListener {
-
             val intent = Intent(this,RegisterActivity::class.java)
             startActivity(intent)
         }
-
     }
+    fun isFormLoginValid(): Boolean{
+        // Obteniedo referencias
+
+        val emailLoqin = findViewById<TextInputLayout>(R.id.til_email_login)
+        val passwordLogin = findViewById<TextInputLayout>(R.id.til_password_login)
+        var email = emailLoqin.editText?.text.toString()
+        var password = passwordLogin.editText?.text.toString()
+
+        val validate = Validate()
+        val isEmailValid = validate.validateEmail(email)
+        val isPasswordValid = validate.validatePassword(password)
+        var valid = true
+        if (!isEmailValid) {
+            emailLoqin.error = "Correo electrónico no válido"
+            valid = false
+
+        }else{
+            emailLoqin.error = ""
+        }
+
+        if (!isPasswordValid) {
+            passwordLogin.error = "Contraseña no válida"
+            valid = false
+
+        }else{
+            passwordLogin.error = ""
+        }
+        return valid
+    }
+
 }
