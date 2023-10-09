@@ -8,8 +8,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView13"
-        android:layout_width="342dp"
-        android:layout_height="506dp"
+        android:layout_width="363dp"
+        android:layout_height="503dp"
         android:layout_margin="16dp"
         android:backgroundTint="#ADEAE4E4"
         app:cardCornerRadius="8dp"
@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
         app:layout_constraintTop_toTopOf="@+id/guideline17"
-        app:layout_constraintVertical_bias="0.41000003">
+        app:layout_constraintVertical_bias="0.37">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,82 +36,114 @@
                 android:id="@+id/userTextView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:text="User1"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="483dp"
+            android:layout_width="367dp"
+            android:layout_height="552dp"
             android:layout_marginTop="60dp"
             android:orientation="vertical"
             android:padding="16dp">
 
 
             <TextView
-                android:id="@+id/titleTextView15"
+                android:id="@+id/title_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 android:text="Título:"
                 android:textColor="@color/colortext"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/descriptionTextView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:text="Aprender a tocar guitarra"
-                android:textSize="16sp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_title_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/titleEditText_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:hint="Ingresa el título" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/expirationDateTextView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 android:text="Fecha de vencimiento:"
                 android:textColor="@color/colortext"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/descriptionTextView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:text="20/03/2024"
-                android:textSize="16sp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_expirationDate_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/expirationDateEditText_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:inputType="date"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/descriptionTextView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="13dp"
                 android:text="Descripción:"
                 android:textColor="@color/colortext"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/descriptionTextView17"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_description_details"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"
-                android:text="Quiero aprender a tocar la guitarra
-                para poder tocar mis canciones
-                favoritas y disfrutar de la música de
-                una manera más personal"
-                android:textSize="16sp" />
+                android:layout_marginBottom="15dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/titleEditText_description_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selecciona el estado:"
+                android:textColor="@color/colortext"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/sp_details"
+                android:layout_width="335dp"
+                android:layout_height="46dp"
+                android:entries="@array/sp_details" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="338dp"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -154,9 +186,37 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
         app:layout_constraintTop_toTopOf="@+id/guideline17"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.006" />
+
+    <ImageButton
+        android:id="@+id/btnEdit"
+        android:layout_width="92dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@color/warning"
+        app:layout_constraintBottom_toTopOf="@+id/guideline18"
+        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toStartOf="@+id/guideline20"
+        app:layout_constraintTop_toBottomOf="@+id/cardView13"
+        app:layout_constraintVertical_bias="0.678"
+        app:srcCompat="@drawable/baseline_edit_24"
+        app:tint="#CB1B1818" />
+
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="92dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/danger"
+        app:tint="#B9F6CA"
+        app:layout_constraintBottom_toTopOf="@+id/guideline18"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintTop_toBottomOf="@+id/cardView13"
+        app:layout_constraintVertical_bias="0.678"
+        app:srcCompat="@drawable/baseline_delete_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

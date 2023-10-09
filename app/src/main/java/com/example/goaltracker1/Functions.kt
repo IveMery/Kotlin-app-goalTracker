@@ -25,12 +25,10 @@ object Functions  {
                 day
             )
             // Configurar el límite de fecha según el contexto
-            if (!isFutureDateEnabled) { //debo establecer en true para fechas futuras registro
-              //  Si no se permiten fechas futuras, establecer el límite máximo en la fecha actual
+            if (!isFutureDateEnabled) {
                 datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
             }
 
-            // Si se desea deshabilitar fechas pasadas, puedes hacerlo de la siguiente manera
             if (!isPastDateEnabled) {
                  datePickerDialog.datePicker.minDate = System.currentTimeMillis()
              }

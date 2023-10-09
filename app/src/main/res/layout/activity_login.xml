@@ -34,26 +34,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.96" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email_login"
-        android:layout_width="353dp"
-        android:layout_height="76dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline6"
-        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.253"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.198">
 
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiel_email_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:hint="@string/til_ingresa_tu_correo_electronico" />
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView"
@@ -65,10 +46,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
-        app:layout_constraintVertical_bias="0.132" />
+        app:layout_constraintVertical_bias="0.135" />
 
     <TextView
         android:id="@+id/textView2"
@@ -88,8 +69,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_password_login"
-        android:layout_width="339dp"
-        android:layout_height="67dp"
+        android:layout_width="344dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintHorizontal_bias="0.44"
@@ -171,5 +152,34 @@
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
         app:layout_constraintVertical_bias="0.02" />
+
+    <Switch
+        android:id="@+id/sw_remember"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="64dp"
+        android:text="Switch"
+        app:layout_constraintBottom_toTopOf="@+id/til_email_login"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_email_login"
+        android:layout_width="346dp"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toTopOf="@+id/til_password_login"
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.488">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiel_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingresa un correo" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
