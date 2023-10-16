@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border_rounded"
+    android:layout_marginBottom="2dp"
+    android:background="@drawable/background_card"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:layout_marginBottom="2dp">
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/imv"
@@ -30,16 +30,18 @@
             android:id="@+id/tv_cst2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textColor="@color/background"
+            android:text="date"
+            android:textColor="@color/colortext"
             android:textSize="14sp" />
+
         <TextView
             android:id="@+id/tv_cst3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Description"
-            android:textColor="@color/background"
+            android:text=""
+            android:textColor="@color/colortext"
             android:textSize="14sp" />
+
         <TextView
             android:id="@+id/tv_cst4"
             android:layout_width="wrap_content"

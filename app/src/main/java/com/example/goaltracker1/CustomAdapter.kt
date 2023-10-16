@@ -29,14 +29,14 @@ class CustomAdapter( var items: MutableList<Item>, private val clickListener: (I
             //val imagen = view.findViewById<ImageView>(R.id.imv)
             val tv_title = view.findViewById<TextView>(R.id.tv_cst1)
             val tv_expiration_date = view.findViewById<TextView>(R.id.tv_cst2)
-            val tv_description = view.findViewById<TextView>(R.id.tv_cst3)
+            //val tv_description = view.findViewById<TextView>(R.id.tv_cst3)
             val tv_state = view.findViewById<TextView>(R.id.tv_cst4)
 
 
             //imagen.setImageResource(item.imageResId)
             tv_title.text = item.title
             tv_expiration_date.text = item.expiration
-            tv_description.text = item.description
+          //  tv_description.text = item.description
             tv_state.text = item.state
             view.setOnClickListener { clickListener(item) }
         }

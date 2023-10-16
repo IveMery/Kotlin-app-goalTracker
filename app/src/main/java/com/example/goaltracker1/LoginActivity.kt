@@ -8,33 +8,35 @@ import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
+import roomDatabase.Db
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        //inicializar db
+        val room = Room.databaseBuilder(this, Db::class.java,"database-app").allowMainThreadQueries().build()
+
         val btnLogin = findViewById<Button>(R.id.btnlogin)
         val btnPassword =findViewById<Button>(R.id.btnpassword)
         val tvForgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
         val preference = getSharedPreferences("datos", Context.MODE_PRIVATE)
         val sw_remember = findViewById<Switch>(R.id.sw_remember)
         val emailLoqin = findViewById<TextInputLayout>(R.id.til_email_login)
+
         val passwordLogin = findViewById<TextInputLayout>(R.id.til_password_login)
         emailLoqin.editText?.setText(preference.getString("mail",""))
-        passwordLogin.editText?.setText(preference.getString("mail",""))
+        passwordLogin.editText?.setText(preference.getString("pass",""))
 
         btnLogin.setOnClickListener {
             val isFormValid = isFormLoginValid()
 
             if (isFormValid) {
                 //Inicio Exitoso
-                Toast.makeText(
-                    this,
-                    "Inicio exitoso",
-                    Toast.LENGTH_SHORT
-                ).show()
-                val intent = Intent(this, GoalsActivity::class.java)
                 val mail = emailLoqin.editText?.text.toString()
                 val pass = passwordLogin.editText?.text.toString()
 
@@ -49,9 +51,25 @@ class LoginActivity : AppCompatActivity() {
                     editor.putString("pass","")
                 }
                 editor.commit()
+
                 intent.putExtra("mail",mail)
                 intent.putExtra("pass",pass)
-                startActivity(intent)
+
+                //db login
+                lifecycleScope.launch{
+                    val response = room.daoUser().login(mail,pass)
+                    if(response.size == 1) {
+                        Toast.makeText(this@LoginActivity,"Login exitoso",Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@LoginActivity, GoalsActivity::class.java)
+                        intent.putExtra("mail",mail)
+                        startActivity(intent)
+
+                    }
+                    else {
+                        Toast.makeText(this@LoginActivity,"Login fallido",Toast.LENGTH_LONG).show()}
+
+                }
+
             } else {
                 Toast.makeText(
                     this,
@@ -60,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
                 ).show()
             }
         }
-
 
         btnPassword.setOnClickListener {
             val intent = Intent(this,ResetpasswordActivity::class.java)

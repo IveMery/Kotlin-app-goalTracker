@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Item(
+    val id :Int,
     val title: String,
     val expiration: String,
     val description: String,

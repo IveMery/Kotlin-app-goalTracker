@@ -6,11 +6,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
+import kotlinx.coroutines.launch
+import roomDatabase.Db
 
 class GoalsActivity : AppCompatActivity() {
 
@@ -18,36 +22,47 @@ class GoalsActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goals)
-
+        //inicializar db
+        val room = Room.databaseBuilder(this, Db::class.java,"database-app").allowMainThreadQueries().build()
         val btnAdd = findViewById<FloatingActionButton>(R.id.floatActionButton)
         val btn_location = findViewById<FloatingActionButton>(R.id.btn_location)
 
 
         //Codigo Nuevo
         val lv_card = findViewById<RecyclerView>(R.id.lv_card)
-        //poblar recyclerView
+        val mail:String = intent.getStringExtra("mail").toString()
+        val name:String = intent.getStringExtra("name").toString()
+
+      //poblar recyclerView
         lv_card.layoutManager = LinearLayoutManager(this)
-        /*  val items = mutableListOf(
-            Item("Elemento 1", "fecha 1", "descripcion 1","ëstado iniciando"),
-            Item("Elemento 2", "fecha 2", "descripcion 2","ëstado comletado"),
-            Item("Elemento 3", "fecha 3", "descripcion 3","ëstado no lo se")
-            // Agrega más elementos según sea necesario
-        )*/
+        val Items = mutableListOf<Item>()
 
+      lifecycleScope.launch{
+          var respuesta = room.daoGoals().getGoalByUser(mail)
+          
+          for(indice in respuesta.indices){
+              Items.add(Item(
+                  respuesta[indice].id.toInt(),
+                  respuesta[indice].title.toString(),
+                  respuesta[indice].expirationDate.toString(),
+                  respuesta[indice].description.toString(),
+                  respuesta[indice].state.toString()))
+          }
+      }
 
+        val adapter = CustomAdapter(Items) { item ->
 
-        val adapter = CustomAdapter(AddgoalsActivity.goalsList) { item ->
-            //Toast.makeText(this, "${item.title}, ${item.description}", Toast.LENGTH_SHORT).show()
-            val position = AddgoalsActivity.goalsList.indexOf(item)
             val intent = Intent(this@GoalsActivity, DetailsActivity::class.java)
+            intent.putExtra("goalID",item.id).toString()
             intent.putExtra("goals_title", item.title)
             intent.putExtra("expirationDate", item.expiration)
             intent.putExtra("description", item.description)
             intent.putExtra("state", item.state)
-
-            intent.putExtra("goals_id", position)// Pasa la posición del elemento
+            intent.putExtra("mail",mail)
+            intent.putExtra("name",name)
             startActivity(intent)
         }
+
         lv_card.adapter = adapter
 
         //IMPLEMENTAMOS GESTOS
@@ -72,8 +87,16 @@ class GoalsActivity : AppCompatActivity() {
                 val position = viewHolder.adapterPosition
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
+                        val item = Items[position] // Obten el elemento a eliminar
+                        val itemId = item.id // Obtén la clave primaria del elemento
+
+                        // Luego, utiliza la clave primaria para eliminar el elemento de la base de datos
+                        room.daoGoals().deleteById(itemId.toLong())
+
+                        // Finalmente, elimina el elemento del RecyclerView y notifica al adaptador
                         adapter.removeItem(position)
-                        Toast.makeText(this@GoalsActivity, "Elemento eliminado", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@GoalsActivity, "Elemento eliminado", Toast.LENGTH_SHORT).show() // adapter.removeItem(position)
+
                     }
                   /*  ItemTouchHelper.RIGHT -> {
                         adapter.removeItem(position)
@@ -88,6 +111,7 @@ class GoalsActivity : AppCompatActivity() {
 
         btnAdd.setOnClickListener{
             val intent = Intent(this, AddgoalsActivity::class.java)
+            intent.putExtra("mail",mail)
             startActivity(intent)
         }
 
@@ -99,7 +123,6 @@ class GoalsActivity : AppCompatActivity() {
 
 
 }
-
 
 
     // Crear un ArrayAdapter y configurarlo para el ListView

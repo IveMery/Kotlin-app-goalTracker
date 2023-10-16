@@ -5,17 +5,26 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
+import roomDatabase.Db
+import roomDatabase.entity.User
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        val btnRegister = findViewById<Button>(R.id.btnRegister)
 
-        val birthDateEditText = findViewById<TextInputEditText>(R.id.et_birthDate)
+
+        val btnRegister = findViewById<Button>(R.id.btnRegister)
+         val birthDateEditText = findViewById<TextInputEditText>(R.id.et_birthDate)
+
+        //inicializar db
+       val room = Room.databaseBuilder(this, Db::class.java,"database-app").allowMainThreadQueries().build()
 
         birthDateEditText.setOnClickListener {
             Functions.showDatePickerDialog(this, birthDateEditText,false,true)
@@ -26,13 +35,33 @@ class RegisterActivity : AppCompatActivity() {
 
             if (isFormValid) {
                 // Registro exitoso
-                Toast.makeText(
-                    this,
-                    "Registro exitoso",
-                    Toast.LENGTH_SHORT
-                ).show()
-                val intent = Intent(this, GoalsActivity::class.java)
-                startActivity(intent)
+                val emailRegister = findViewById<TextInputLayout>(R.id.til_email_register)
+                val nameRegister = findViewById<TextInputLayout>(R.id.til_name_register)
+                val birthDateRegister =findViewById<TextInputLayout>(R.id.til_birthDate_register)
+                val passwordRegister = findViewById<TextInputLayout>(R.id.til_password_register)
+
+                //obterner widgets para db
+
+                var email = emailRegister.editText?.text.toString()
+                var password = passwordRegister.editText?.text.toString()
+                var birthDate = birthDateRegister.editText?.text.toString()
+                var name = nameRegister.editText?.text.toString()
+
+                //Crear objeto a insertar
+                val userRegister = User(email,name,birthDate,password)
+                lifecycleScope.launch{
+                    val id = room.daoUser().addUser(userRegister)
+                    if(id>0){
+                        val intent = Intent(this@RegisterActivity, GoalsActivity::class.java)
+                        intent.putExtra("name",name)
+                        startActivity(intent)
+                        Toast.makeText(this@RegisterActivity,"Usuario registrado exitosamente",Toast.LENGTH_LONG).show()
+
+                    }else{
+                        Toast.makeText(this@RegisterActivity,"No se pudo registrar usuario",Toast.LENGTH_LONG).show()
+                    }
+                }
+
             } else {
                 Toast.makeText(
                     this,

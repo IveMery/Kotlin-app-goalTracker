@@ -160,6 +160,25 @@
                     android:hint="Ingresa la descripción" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selecciona el estado:"
+                android:textColor="@color/colortext"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/sp_add"
+                android:layout_width="335dp"
+                android:layout_height="46dp"
+                android:entries="@array/sp_details" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="338dp"
+                android:layout_height="wrap_content" />
+
             <Button
                 android:id="@+id/addButton"
                 android:layout_width="278dp"
