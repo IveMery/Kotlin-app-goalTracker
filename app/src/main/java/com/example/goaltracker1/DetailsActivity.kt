@@ -82,6 +82,7 @@ class DetailsActivity : AppCompatActivity() {
                     println(respuesta)
                     val intent = Intent(this@DetailsActivity, GoalsActivity::class.java)
                     intent.putExtra("mail", mail)
+
                     intent.putExtra("name",name)
                     startActivity(intent)
 

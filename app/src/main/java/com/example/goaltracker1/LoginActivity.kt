@@ -3,6 +3,7 @@ package com.example.goaltracker1
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
@@ -25,12 +26,15 @@ class LoginActivity : AppCompatActivity() {
         val btnPassword =findViewById<Button>(R.id.btnpassword)
         val tvForgotPassword = findViewById<TextView>(R.id.tvForgotPassword)
         val preference = getSharedPreferences("datos", Context.MODE_PRIVATE)
+
         val sw_remember = findViewById<Switch>(R.id.sw_remember)
         val emailLoqin = findViewById<TextInputLayout>(R.id.til_email_login)
 
         val passwordLogin = findViewById<TextInputLayout>(R.id.til_password_login)
         emailLoqin.editText?.setText(preference.getString("mail",""))
         passwordLogin.editText?.setText(preference.getString("pass",""))
+
+
 
         btnLogin.setOnClickListener {
             val isFormValid = isFormLoginValid()
@@ -58,11 +62,17 @@ class LoginActivity : AppCompatActivity() {
                 //db login
                 lifecycleScope.launch{
                     val response = room.daoUser().login(mail,pass)
+                    val userdb = room.daoUser().getUsername(mail)
                     if(response.size == 1) {
                         Toast.makeText(this@LoginActivity,"Login exitoso",Toast.LENGTH_LONG).show()
                         val intent = Intent(this@LoginActivity, GoalsActivity::class.java)
                         intent.putExtra("mail",mail)
+                        intent.putExtra("name",userdb)
+                        Log.d("recuperando username desde la db",userdb)
                         startActivity(intent)
+
+
+
 
                     }
                     else {

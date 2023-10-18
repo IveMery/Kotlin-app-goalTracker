@@ -31,7 +31,7 @@ class AddgoalsActivity : AppCompatActivity() {
         val btnAdd = findViewById<Button>(R.id.addButton)
         val expirationDateEditText = findViewById<TextInputEditText>(R.id.expirationDateEditText)
 
-
+        val name: String = intent.getStringExtra("name").toString()
         expirationDateEditText.setOnClickListener {
             Functions.showDatePickerDialog(this, expirationDateEditText,true,false)
         }
@@ -79,7 +79,7 @@ class AddgoalsActivity : AppCompatActivity() {
                             ).show()
                             val intent = Intent(this@AddgoalsActivity, GoalsActivity::class.java)
                             intent.putExtra("mail", mail)
-                            Log.d("el user de intet el mail", mail)
+                            intent.putExtra("name", name)
                             startActivity(intent)
                         }
 

@@ -21,10 +21,10 @@ class RegisterActivity : AppCompatActivity() {
 
 
         val btnRegister = findViewById<Button>(R.id.btnRegister)
-         val birthDateEditText = findViewById<TextInputEditText>(R.id.et_birthDate)
+        val birthDateEditText = findViewById<TextInputEditText>(R.id.et_birthDate)
 
         //inicializar db
-       val room = Room.databaseBuilder(this, Db::class.java,"database-app").allowMainThreadQueries().build()
+        val room = Room.databaseBuilder(this, Db::class.java,"database-app").allowMainThreadQueries().build()
 
         birthDateEditText.setOnClickListener {
             Functions.showDatePickerDialog(this, birthDateEditText,false,true)
@@ -40,6 +40,8 @@ class RegisterActivity : AppCompatActivity() {
                 val birthDateRegister =findViewById<TextInputLayout>(R.id.til_birthDate_register)
                 val passwordRegister = findViewById<TextInputLayout>(R.id.til_password_register)
 
+
+
                 //obterner widgets para db
 
                 var email = emailRegister.editText?.text.toString()
@@ -51,9 +53,11 @@ class RegisterActivity : AppCompatActivity() {
                 val userRegister = User(email,name,birthDate,password)
                 lifecycleScope.launch{
                     val id = room.daoUser().addUser(userRegister)
+                   val userdb = room.daoUser().getUsername(email)
                     if(id>0){
                         val intent = Intent(this@RegisterActivity, GoalsActivity::class.java)
-                        intent.putExtra("name",name)
+                        intent.putExtra("name",userdb)
+                        intent.putExtra("mail",email)
                         startActivity(intent)
                         Toast.makeText(this@RegisterActivity,"Usuario registrado exitosamente",Toast.LENGTH_LONG).show()
 

@@ -9,7 +9,7 @@ import roomDatabase.entity.User
 
 @Database(
     entities = [User::class, Goals::class],
-    version = 12
+    version = 13
 
 
 )

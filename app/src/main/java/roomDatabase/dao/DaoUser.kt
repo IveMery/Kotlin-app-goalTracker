@@ -23,8 +23,10 @@ interface DaoUser {
     @Query("UPDATE User SET email = :email, password = :password WHERE username = :username")
      fun updateUser(email: String, password: String, username: String): Int
 
+    @Query("SELECT username FROM User WHERE email = :email")
+    fun getUsername(email: String): String
 
 
-    @Query("DELETE FROM User WHERE username = :username")
-    fun deleteUserById(username: String)
+    @Query("DELETE FROM User WHERE id = :id")
+    fun deleteUserById(id: String)
 }
